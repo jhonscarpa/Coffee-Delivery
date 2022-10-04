@@ -58,3 +58,64 @@ export const ContentCoffee = styled.div`
     color: ${props => props.theme["base-label"]};
   }
 `
+export const FormBuyCoffee = styled.form`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  padding: 0 1.5rem;
+  div {
+    display: flex;
+    gap: 0.5rem;
+  }
+`
+
+export const ContentInput = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  display: flex;
+
+  padding: 0.5rem;
+  border-radius: 6px;
+  background: ${props => props.theme["base-button"]};
+  width: 100%;
+  input {
+    border: none;
+    background: transparent;
+    width: 1.25rem;
+
+    text-align: center;
+    font-size: 1rem;
+  }
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+  input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+`
+
+export const ButtonInputAction = styled.button`
+  background: none;
+  border: none;
+  color: ${props => props.theme.purple};
+`
+
+export const AddCartButton = styled.button`
+  padding: 0.5rem;
+  background-color: ${props => props.theme["purple-dark"]};
+  color: ${props => props.theme["base-card"]};
+  border: none;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    width: 1.233rem;
+    height: 1.117rem;
+  }
+`
