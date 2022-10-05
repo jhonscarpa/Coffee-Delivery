@@ -102,6 +102,18 @@ export const ButtonInputAction = styled.button`
   background: none;
   border: none;
   color: ${props => props.theme.purple};
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  :disabled {
+    cursor: not-allowed;
+  }
+  transition: color 0.3s;
+
+  :hover {
+    color: ${props => props.theme["purple-dark"]};
+  }
 `
 
 export const AddCartButton = styled.button`
@@ -113,9 +125,14 @@ export const AddCartButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 
   svg {
     width: 1.233rem;
     height: 1.117rem;
+  }
+  transition: background-color 0.3s;
+  :hover {
+    background-color: ${props => props.theme.purple};
   }
 `

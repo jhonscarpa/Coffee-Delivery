@@ -6,6 +6,7 @@ export function DefaultLayout() {
   return (
     <LayoutContainer>
       <Header />
+      <div className="divider" />
       <Outlet />
     </LayoutContainer>
   )

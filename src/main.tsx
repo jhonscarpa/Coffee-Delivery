@@ -130,7 +130,7 @@ createServer({
           description:
             "Bebida a base de café, uísque irlandês, açúcar e chantilly",
           price: 9.9,
-          imgURL: coffeesImg.arabe,
+          imgURL: coffeesImg.irlandes,
         },
       ],
     })

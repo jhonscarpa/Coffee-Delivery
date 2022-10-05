@@ -1,9 +1,10 @@
-import { createContext, ReactNode, useState } from "react"
+import { createContext, ReactNode, useEffect, useState } from "react"
 import { IPropsCoffee } from "../@types/coffee"
 
 interface IPropsCoffeeContext {
   coffees: IPropsCoffee[]
   addNewCoffee: (newCoffee: IPropsCoffee) => void
+  totalCoffeeInCart: number
 }
 
 export const CoffeesContext = createContext({} as IPropsCoffeeContext)
@@ -14,14 +15,29 @@ interface IPropsCoffeeContextProvider {
 export function CoffeesContextProvider({
   children,
 }: IPropsCoffeeContextProvider) {
-  const [coffees, setCoffees] = useState<IPropsCoffee[]>([])
+  const [coffees, setCoffees] = useState<IPropsCoffee[]>(() => {
+    let initialState = localStorage.getItem("@coffee-delivery-1.0.0")
+    if (initialState) {
+      return (initialState = JSON.parse(initialState))
+    } else {
+      return []
+    }
+  })
+  const totalCoffeeInCart = coffees.length
+
+  useEffect(() => {
+    localStorage.setItem("@coffee-delivery-1.0.0", JSON.stringify(coffees))
+  }, [coffees])
 
   function addNewCoffee(newCoffee: IPropsCoffee) {
-    const isCoffeeAlreadyExists = coffees.findIndex(coffee => coffee.id === newCoffee.id)
+    const isCoffeeAlreadyExists = coffees.findIndex(
+      coffee => coffee.id === newCoffee.id,
+    )
 
-    if (isCoffeeAlreadyExists) {
+    if (isCoffeeAlreadyExists >= 0) {
       setCoffees(state => {
-        state[isCoffeeAlreadyExists].amount = state[isCoffeeAlreadyExists].amount + 1
+        state[isCoffeeAlreadyExists].amount =
+          state[isCoffeeAlreadyExists].amount + newCoffee.amount
         return state
       })
     } else {
@@ -32,7 +48,9 @@ export function CoffeesContextProvider({
   }
 
   return (
-    <CoffeesContext.Provider value={{ coffees, addNewCoffee }}>
+    <CoffeesContext.Provider
+      value={{ coffees, addNewCoffee, totalCoffeeInCart }}
+    >
       {children}
     </CoffeesContext.Provider>
   )

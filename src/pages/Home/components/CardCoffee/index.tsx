@@ -9,16 +9,44 @@ import {
 } from "./styles"
 import { IPropsCoffee } from "../../../../@types/coffee"
 import { Minus, Plus, ShoppingCart } from "phosphor-react"
+import { FormEvent, useState } from "react"
+import { useCoffees } from "../../../../hooks/useCoffees"
 
 interface IPropsCardCoffee {
   coffee: IPropsCoffee
 }
 
 export function CardCoffee({ coffee }: IPropsCardCoffee) {
+  const { addNewCoffee } = useCoffees()
+  const [amountCoffee, setAmountCoffee] = useState<number>(1)
+
   const maskValueCoffee = new Intl.NumberFormat("pt-BR", {
     style: "currency",
     currency: "BRL",
   }).format(coffee.price)
+
+  function handleAddCoffeeAmount() {
+    setAmountCoffee(state => state + 1)
+  }
+  function handleRemoveCoffeeAmount() {
+    setAmountCoffee(state => state - 1)
+  }
+
+  function handleSubmitForm(event: FormEvent) {
+    event.preventDefault()
+    const newCoffee = {
+      ...coffee,
+      amount: amountCoffee,
+    }
+    console.log(newCoffee)
+    addNewCoffee(newCoffee)
+  }
+
+  function handleChangeCoffeeAmount(event: FormEvent<HTMLInputElement>) {
+    console.log(event)
+    setAmountCoffee((event.target as HTMLInputElement).valueAsNumber)
+  }
+
   return (
     <CardCoffeeContainer>
       <HeaderCardCoffee>
@@ -34,15 +62,24 @@ export function CardCoffee({ coffee }: IPropsCardCoffee) {
         <h3>{coffee.title}</h3>
         <p>{coffee.description}</p>
       </ContentCoffee>
-      <FormBuyCoffee>
+      <FormBuyCoffee onSubmit={handleSubmitForm}>
         <strong>{maskValueCoffee}</strong>
         <div>
           <ContentInput>
-            <ButtonInputAction type="button">
+            <ButtonInputAction
+              type="button"
+              onClick={handleRemoveCoffeeAmount}
+              disabled={amountCoffee <= 1}
+            >
               <Minus weight="bold" />
             </ButtonInputAction>
-            <input type="number" min={1} defaultValue={1} />
-            <ButtonInputAction type="button">
+            <input
+              type="number"
+              min={1}
+              value={amountCoffee}
+              onChange={handleChangeCoffeeAmount}
+            />
+            <ButtonInputAction type="button" onClick={handleAddCoffeeAmount}>
               <Plus weight="bold" />
             </ButtonInputAction>
           </ContentInput>

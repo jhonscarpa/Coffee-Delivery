@@ -5,6 +5,10 @@ export const HeaderContainer = styled.div`
   padding: 2.06rem 10rem;
   flex-direction: row;
   justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  background-color: ${props => props.theme.background};
+  z-index: 1;
 `
 
 export const ActionsContent = styled.div`
@@ -35,11 +39,28 @@ export const ActionsContent = styled.div`
     border-radius: 6px;
     padding: 0.5rem;
     cursor: pointer;
+    position: relative;
 
     svg {
       width: 1.375rem;
       height: 1.375rem;
       color: ${props => props.theme["yellow-dark"]};
+    }
+
+    span {
+      position: absolute;
+      right: -8px;
+      top: -8px;
+      background: ${props => props.theme["yellow-dark"]};
+      color: ${props => props.theme.white};
+      border-radius: 100%;
+      width: 1.25rem;
+      height: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: bold;
     }
   }
 `
