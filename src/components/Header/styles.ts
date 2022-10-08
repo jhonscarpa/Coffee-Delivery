@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom"
 import styled from "styled-components"
 
 export const HeaderContainer = styled.div`
@@ -9,6 +10,9 @@ export const HeaderContainer = styled.div`
   width: 100%;
   background-color: ${props => props.theme.background};
   z-index: 1;
+`
+export const BackToHome = styled(NavLink)`
+  height: 2.5rem;
 `
 
 export const ActionsContent = styled.div`

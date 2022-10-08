@@ -1,4 +1,4 @@
-import { ActionsContent, HeaderContainer } from "./styles"
+import { ActionsContent, BackToHome, HeaderContainer } from "./styles"
 import logoImg from "../../assets/logo.svg"
 import { NavLink } from "react-router-dom"
 import { MapPin, ShoppingCart } from "phosphor-react"
@@ -8,13 +8,15 @@ export function Header() {
   const { totalCoffeeInCart } = useCoffees()
   return (
     <HeaderContainer>
-      <img src={logoImg} alt="logo Coffee Delivery" />
+      <BackToHome to="/" title="Voltar para a home">
+        <img src={logoImg} alt="logo Coffee Delivery" />
+      </BackToHome>
       <ActionsContent>
         <p>
           <MapPin weight="fill" />
           Taubaté, SP
         </p>
-        <NavLink to="#" title="Carrinho de compras">
+        <NavLink to="/carrinho" title="Carrinho de compras">
           <ShoppingCart weight="fill" />
           {totalCoffeeInCart > 0 && <span>{totalCoffeeInCart}</span>}
         </NavLink>
