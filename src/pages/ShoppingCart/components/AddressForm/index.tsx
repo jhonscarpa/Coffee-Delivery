@@ -13,14 +13,14 @@ import {
 } from "./styles"
 
 export function AddressForm() {
-  const [cepMask, setCepMask] = useState("")
-  const { register, setValue } = useFormContext()
+  const { register, setValue, watch } = useFormContext()
+  const cepMask = watch("zipCode")
 
   function handleChangeMask(e: FormEvent<HTMLInputElement>) {
     const cepValue = unMask((e.target as HTMLInputElement).value)
 
     const maskValue = mask(cepValue, ["99999-999"])
-    setCepMask(maskValue)
+    setValue("zipCode", maskValue)
   }
 
   async function onBlurCep(e: FormEvent<HTMLInputElement>) {
@@ -52,9 +52,12 @@ export function AddressForm() {
       <ContentForm>
         <ShortInput
           placeholder="CEP"
-          onChange={handleChangeMask}
           value={cepMask}
-          onBlur={onBlurCep}
+          {...(register("zipCode"),
+          {
+            onBlur: onBlurCep,
+            onChange: handleChangeMask,
+          })}
         />
         <BaseInput {...register("street")} placeholder="Rua" />
         <RowInputForm>

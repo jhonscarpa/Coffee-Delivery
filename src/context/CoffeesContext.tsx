@@ -5,6 +5,10 @@ interface IPropsCoffeeContext {
   coffees: IPropsCoffee[]
   addNewCoffee: (newCoffee: IPropsCoffee) => void
   totalCoffeeInCart: number
+  handleAddAmountCoffee: (updateAmount: IPropsCoffee) => void
+  handleSubtractAmountCoffee: (updateAmount: IPropsCoffee) => void
+  handleChangeUpdateCoffee: (updateAmount: IPropsCoffee) => void
+  handleRemoveCoffeeShoppingCart: (id: string | number) => void
 }
 
 export const CoffeesContext = createContext({} as IPropsCoffeeContext)
@@ -47,9 +51,56 @@ export function CoffeesContextProvider({
     }
   }
 
+  function handleAddAmountCoffee(coffeeUpdate: IPropsCoffee) {
+    let updateCoffee = coffees.map(coffee => {
+      if (coffee.id === coffeeUpdate.id) {
+        return { ...coffee, amount: coffee.amount + 1 }
+      } else {
+        return coffee
+      }
+    })
+
+    setCoffees(updateCoffee)
+  }
+  function handleSubtractAmountCoffee(coffeeUpdate: IPropsCoffee) {
+    let updateCoffee = coffees.map(coffee => {
+      if (coffee.id === coffeeUpdate.id) {
+        return { ...coffee, amount: coffee.amount - 1 }
+      } else {
+        return coffee
+      }
+    })
+
+    setCoffees(updateCoffee)
+  }
+  function handleChangeUpdateCoffee(coffeeUpdate: IPropsCoffee) {
+    let updateCoffee = coffees.map(coffee => {
+      if (coffee.id === coffeeUpdate.id) {
+        return { ...coffee, amount: coffeeUpdate.amount }
+      } else {
+        return coffee
+      }
+    })
+
+    setCoffees(updateCoffee)
+  }
+
+  function handleRemoveCoffeeShoppingCart(id: string | number) {
+    const newListCoffees = coffees.filter(coffee => coffee.id !== id)
+    setCoffees(newListCoffees)
+  }
+
   return (
     <CoffeesContext.Provider
-      value={{ coffees, addNewCoffee, totalCoffeeInCart }}
+      value={{
+        coffees,
+        addNewCoffee,
+        totalCoffeeInCart,
+        handleAddAmountCoffee,
+        handleSubtractAmountCoffee,
+        handleChangeUpdateCoffee,
+        handleRemoveCoffeeShoppingCart,
+      }}
     >
       {children}
     </CoffeesContext.Provider>

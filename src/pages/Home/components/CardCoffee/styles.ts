@@ -97,7 +97,6 @@ export const ContentInput = styled.div`
     appearance: textfield;
   }
 `
-
 export const ButtonInputAction = styled.button`
   background: none;
   border: none;

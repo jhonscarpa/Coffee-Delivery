@@ -43,7 +43,6 @@ export function CardCoffee({ coffee }: IPropsCardCoffee) {
   }
 
   function handleChangeCoffeeAmount(event: FormEvent<HTMLInputElement>) {
-    console.log(event)
     setAmountCoffee((event.target as HTMLInputElement).valueAsNumber)
   }
 
