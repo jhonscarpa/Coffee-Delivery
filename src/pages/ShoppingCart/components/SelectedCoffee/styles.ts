@@ -1,7 +1,19 @@
 import styled from "styled-components"
 
-export const Container = styled.div`
+export const Container = styled.li`
   display: flex;
+  list-style: none;
+  justify-content: space-between;
+
+  .content {
+    display: flex;
+    flex-direction: row;
+    gap: 1.25rem;
+    img {
+      width: 4rem;
+      height: 4rem;
+    }
+  }
 `
 export const CoffeeContent = styled.div`
   display: flex;

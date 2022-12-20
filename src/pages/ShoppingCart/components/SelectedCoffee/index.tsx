@@ -41,37 +41,45 @@ export function SelectedCoffee({ coffee }: IPropsSelectedCoffee) {
     handleRemoveCoffeeShoppingCart(coffee.id)
   }
 
+  const maskMoneyValueCoffee = new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  }).format(coffee.price)
+
   return (
     <>
       <Container>
-        <img src={coffee.imgURL} />
-        <CoffeeContent>
-          {coffee.title}
-          <div>
-            <ContentInput>
-              <ButtonInputAction
-                type="button"
-                onClick={handleSubtractCoffee}
-                disabled={coffee.amount <= 1}
-              >
-                <Minus weight="bold" />
-              </ButtonInputAction>
-              <input
-                type="number"
-                min={1}
-                value={coffee.amount}
-                onChange={onChangeUpdateUpdateAmount}
-              />
-              <ButtonInputAction type="button" onClick={handleAddCoffee}>
-                <Plus weight="bold" />
-              </ButtonInputAction>
-            </ContentInput>
-            <RemoveButton type="button" onClick={handleRemoveCoffee}>
-              <Trash />
-              REMOVER
-            </RemoveButton>
-          </div>
-        </CoffeeContent>
+        <div className="content">
+          <img src={coffee.imgURL} />
+          <CoffeeContent>
+            {coffee.title}
+            <div>
+              <ContentInput>
+                <ButtonInputAction
+                  type="button"
+                  onClick={handleSubtractCoffee}
+                  disabled={coffee.amount <= 1}
+                >
+                  <Minus weight="bold" />
+                </ButtonInputAction>
+                <input
+                  type="number"
+                  min={1}
+                  value={coffee.amount}
+                  onChange={onChangeUpdateUpdateAmount}
+                />
+                <ButtonInputAction type="button" onClick={handleAddCoffee}>
+                  <Plus weight="bold" />
+                </ButtonInputAction>
+              </ContentInput>
+              <RemoveButton type="button" onClick={handleRemoveCoffee}>
+                <Trash />
+                REMOVER
+              </RemoveButton>
+            </div>
+          </CoffeeContent>
+        </div>
+        <strong>{maskMoneyValueCoffee}</strong>
       </Container>
       <Divider />
     </>

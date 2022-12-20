@@ -1,5 +1,5 @@
-import { NavLink } from "react-router-dom"
-import styled from "styled-components"
+import { NavLink } from 'react-router-dom'
+import styled from 'styled-components'
 
 export const HeaderContainer = styled.div`
   display: flex;
@@ -10,6 +10,7 @@ export const HeaderContainer = styled.div`
   width: 100%;
   background-color: ${props => props.theme.background};
   z-index: 1;
+  max-width: 1440px;
 `
 export const BackToHome = styled(NavLink)`
   height: 2.5rem;
@@ -25,8 +26,8 @@ export const ActionsContent = styled.div`
     border-radius: 6px;
     gap: 0.25rem;
     align-items: center;
-    background: ${props => props.theme["purple-light"]};
-    color: ${props => props.theme["purple-dark"]};
+    background: ${props => props.theme['purple-light']};
+    color: ${props => props.theme['purple-dark']};
     font-size: 0.875rem;
 
     svg {
@@ -39,7 +40,7 @@ export const ActionsContent = styled.div`
   a {
     width: 2.375rem;
     height: 2.375rem;
-    background: ${props => props.theme["yellow-light"]};
+    background: ${props => props.theme['yellow-light']};
     border-radius: 6px;
     padding: 0.5rem;
     cursor: pointer;
@@ -48,14 +49,14 @@ export const ActionsContent = styled.div`
     svg {
       width: 1.375rem;
       height: 1.375rem;
-      color: ${props => props.theme["yellow-dark"]};
+      color: ${props => props.theme['yellow-dark']};
     }
 
     span {
       position: absolute;
       right: -8px;
       top: -8px;
-      background: ${props => props.theme["yellow-dark"]};
+      background: ${props => props.theme['yellow-dark']};
       color: ${props => props.theme.white};
       border-radius: 100%;
       width: 1.25rem;

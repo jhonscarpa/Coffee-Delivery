@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components"
+import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
 *{
@@ -10,12 +10,12 @@ export const GlobalStyle = createGlobalStyle`
 
 :focus{
   outline: 0;
-  box-shadow: 0 0 0 2px ${props => props.theme["yellow-dark"]};
+  box-shadow: 0 0 0 2px ${props => props.theme['yellow-dark']};
 }
 
 body{
   background:${props => props.theme.background} ;
-  color: ${props => props.theme["base-text"]};
+  color: ${props => props.theme['base-text']};
   -webkit-font-smoothing:antialiased;
 }
 
@@ -26,4 +26,24 @@ body,input,textarea,button{
 
 }
 
+*::-webkit-scrollbar {
+  width: 5px;             
+}
+
+*::-webkit-scrollbar-track {
+  background: ${props => props.theme.purple};        
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: ${props => props.theme['purple-dark']};    
+       
+ 
+}
+
+* {
+  scrollbar-width: thin;          
+  scrollbar-color: ${props => props.theme.purple} ${props =>
+  props.theme['purple-dark']};  
+  
+}
 `
