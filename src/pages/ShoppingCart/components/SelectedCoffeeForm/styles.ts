@@ -23,6 +23,7 @@ export const ContentValuesCoffees = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  margin-bottom: 1.5rem;
 
   p {
     display: flex;
@@ -40,5 +41,25 @@ export const ContentValuesCoffees = styled.div`
       font-weight: 700;
       padding: 0;
     }
+  }
+`
+
+export const ButtonConfirmOrdem = styled.button`
+  background: ${props => props.theme.yellow};
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0.75rem 0.5rem;
+  border: 0px;
+
+  color: ${props => props.theme.white};
+  font-weight: 700;
+  font-size: 0.875rem;
+  transition: background-color 0.3s;
+  cursor: pointer;
+  :hover {
+    background: ${props => props.theme['yellow-dark']};
   }
 `

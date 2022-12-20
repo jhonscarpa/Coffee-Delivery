@@ -1,6 +1,11 @@
 import { useCoffees } from '../../../../hooks/useCoffees'
 import { SelectedCoffee } from '../SelectedCoffee'
-import { Container, ContentValuesCoffees, ListCoffeesSelected } from './styles'
+import {
+  ButtonConfirmOrdem,
+  Container,
+  ContentValuesCoffees,
+  ListCoffeesSelected,
+} from './styles'
 
 export function SelectedCoffeeForm() {
   const { coffees } = useCoffees()
@@ -44,6 +49,7 @@ export function SelectedCoffeeForm() {
           <strong>{maskTotalOrder}</strong>
         </p>
       </ContentValuesCoffees>
+      <ButtonConfirmOrdem type="submit">Confirmar pedido</ButtonConfirmOrdem>
     </Container>
   )
 }
