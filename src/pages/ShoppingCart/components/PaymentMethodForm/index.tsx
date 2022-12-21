@@ -1,11 +1,12 @@
-import { Bank, CreditCard, CurrencyDollar, Money } from "phosphor-react"
-import { useFormContext } from "react-hook-form"
-import { Container, ContentForm, SelectedPaymentMethod } from "./styles"
+import { Bank, CreditCard, CurrencyDollar, Money } from 'phosphor-react'
+import { useFormContext } from 'react-hook-form'
+import { Container, ContentForm, SelectedPaymentMethod } from './styles'
+
 
 export function PaymentMethodForm() {
   const { register, watch } = useFormContext()
 
-  const isActivePaymentMethod = watch("paymentMethod")
+  const isActivePaymentMethod = watch('paymentMethod')
 
   return (
     <Container>
@@ -21,42 +22,42 @@ export function PaymentMethodForm() {
       <ContentForm>
         <SelectedPaymentMethod
           htmlFor="creditCard"
-          active={isActivePaymentMethod === "creditCard"}
+          active={isActivePaymentMethod === 'creditCard'}
         >
           <CreditCard />
           CARTÃO DE CRÉDITO
         </SelectedPaymentMethod>
         <input
           type="radio"
-          {...register("paymentMethod")}
+          {...register('paymentMethod')}
           value="creditCard"
           id="creditCard"
           hidden
         />
         <SelectedPaymentMethod
           htmlFor="debitCard"
-          active={isActivePaymentMethod === "debitCard"}
+          active={isActivePaymentMethod === 'debitCard'}
         >
           <Bank />
           CARTÃO DE DÉBITO
         </SelectedPaymentMethod>
         <input
           type="radio"
-          {...register("paymentMethod")}
+          {...register('paymentMethod')}
           value="debitCard"
           id="debitCard"
           hidden
         />
         <SelectedPaymentMethod
           htmlFor="ticket"
-          active={isActivePaymentMethod === "ticket"}
+          active={isActivePaymentMethod === 'ticket'}
         >
           <Money />
           DINHEIRO
         </SelectedPaymentMethod>
         <input
           type="radio"
-          {...register("paymentMethod")}
+          {...register('paymentMethod')}
           value="ticket"
           id="ticket"
           hidden
