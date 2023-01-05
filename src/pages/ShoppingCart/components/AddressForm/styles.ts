@@ -32,6 +32,19 @@ export const ContentForm = styled.section`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
+  .contentErrorInput {
+    position: relative;
+    span {
+      position: absolute;
+      bottom: -5px;
+      left: 10px;
+      background: ${props => props.theme['base-card']};
+      color: ${props => props.theme.error};
+      padding: 0 0.5rem;
+      font-size: 0.75rem;
+    }
+  }
 `
 export const RowInputForm = styled.div`
   display: flex;

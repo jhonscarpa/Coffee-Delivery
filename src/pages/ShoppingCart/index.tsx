@@ -4,7 +4,7 @@ import { AddressForm } from './components/AddressForm'
 import { PaymentMethodForm } from './components/PaymentMethodForm'
 import { SelectedCoffeeForm } from './components/SelectedCoffeeForm'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { z as zod } from 'zod'
+import * as zod from 'zod'
 
 const formSchema = zod.object({
   zipCode: zod.string().min(9, 'CEP inválido'),
@@ -15,9 +15,7 @@ const formSchema = zod.object({
   city: zod.string().min(1, 'Informe a cidade'),
   state: zod.string().min(2, 'Informe o estado').max(2, 'Estado invalido'),
 
-  // paymentMethod
-  // :
-  // "creditCard"
+  // paymentMethod: "creditCard"
 })
 
 type formSchemaType = zod.infer<typeof formSchema>
