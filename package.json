@@ -20,8 +20,7 @@
     "react-hook-form": "^7.36.1",
     "react-router-dom": "^6.4.1",
     "remask": "^0.1.0-alpha.5",
-    "styled-components": "^5.3.6",
-    "zod": "^3.20.2"
+    "styled-components": "^5.3.6"
   },
   "devDependencies": {
     "@types/react": "^18.0.17",

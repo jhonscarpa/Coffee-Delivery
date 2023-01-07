@@ -7,7 +7,6 @@ export const Container = styled.div`
   background: ${props => props.theme['base-card']};
   border-radius: 6px;
   gap: 2rem;
-
   > header {
     display: flex;
     gap: 8px;
@@ -35,11 +34,14 @@ export const ContentForm = styled.section`
 
   .contentErrorInput {
     position: relative;
+    display: flex;
+
     span {
       position: absolute;
       bottom: -5px;
       left: 10px;
-      background: ${props => props.theme['base-card']};
+      background: ${props => props.theme['base-input']};
+
       color: ${props => props.theme.error};
       padding: 0 0.5rem;
       font-size: 0.75rem;
@@ -51,6 +53,7 @@ export const RowInputForm = styled.div`
   gap: 0.75rem;
   position: relative;
   align-items: center;
+  width: 100%;
 
   i {
     position: absolute;
@@ -80,6 +83,7 @@ export const BaseInput = styled.input<IPropsBaseInput>`
   color: ${props => props.theme['base-text']};
   font-size: 0.875rem;
   padding-right: ${props => props.suffix && '4rem'};
+  position: relative;
 
   ::placeholder {
     color: ${props => props.theme['base-label']};
@@ -88,7 +92,7 @@ export const BaseInput = styled.input<IPropsBaseInput>`
 `
 
 export const ShortInput = styled(BaseInput)`
-  max-width: 12.5rem;
+  width: 12.5rem;
 
   &.ufInput {
     max-width: 3.75rem;

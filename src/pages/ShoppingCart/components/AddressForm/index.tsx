@@ -20,7 +20,6 @@ export function AddressForm() {
     formState: { errors },
   } = useFormContext()
   const cepMask = watch('zipCode')
-  console.log(errors)
 
   function handleChangeMask(e: FormEvent<HTMLInputElement>) {
     const cepValue = unMask((e.target as HTMLInputElement).value)
@@ -67,6 +66,7 @@ export function AddressForm() {
             })}
             isError={errors.zipCode ? 'error' : 'success'}
           />
+          {/* @ts-ignore */}
           {errors.zipCode?.message && <span>{errors.zipCode?.message}</span>}
         </div>
         <div className="contentErrorInput">
@@ -75,6 +75,7 @@ export function AddressForm() {
             placeholder="Rua"
             isError={errors.street ? 'error' : 'success'}
           />
+          {/* @ts-ignore */}
           {errors.street?.message && <span>{errors.street?.message}</span>}
         </div>
         <RowInputForm>
@@ -85,6 +86,7 @@ export function AddressForm() {
               placeholder="Número"
               isError={errors.number ? 'error' : 'success'}
             />
+            {/* @ts-ignore */}
             {errors.number?.message && <span>{errors.number?.message}</span>}
           </div>
 
@@ -104,25 +106,30 @@ export function AddressForm() {
               isError={errors.neighborhood ? 'error' : 'success'}
             />
             {errors.neighborhood?.message && (
+              // @ts-ignore
               <span>{errors.neighborhood?.message}</span>
             )}
           </div>
-          <div className="contentErrorInput">
+          <div className="contentErrorInput" style={{ width: '100%' }}>
             <BaseInput
               {...register('city')}
               placeholder="Cidade"
               isError={errors.city ? 'error' : 'success'}
             />
+            {/* @ts-ignore */}
             {errors.city?.message && <span>{errors.city?.message}</span>}
           </div>
-          <div className="contentErrorInput">
+          <div className="contentErrorInput ufContent">
             <ShortInput
               {...register('state')}
               placeholder="UF"
               className="ufInput"
               isError={errors.state ? 'error' : 'success'}
             />
-            {errors.state?.message && <span>{errors.state?.message}</span>}
+            {errors.state?.message && (
+              // @ts-ignore
+              <span>{errors.state?.message}</span>
+            )}
           </div>
         </RowInputForm>
       </ContentForm>
