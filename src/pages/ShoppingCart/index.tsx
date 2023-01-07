@@ -5,7 +5,7 @@ import { PaymentMethodForm } from './components/PaymentMethodForm'
 import { SelectedCoffeeForm } from './components/SelectedCoffeeForm'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const formSchema = yup.object().shape({
   zipCode: yup.string().required('Informe o cep').min(9, 'CEP inválido'),
@@ -26,11 +26,36 @@ const formSchema = yup.object().shape({
 type formSchemaType = yup.InferType<typeof formSchema>
 
 export function ShoppingCart() {
+  const getDataUser = localStorage.getItem('coffeeDelivery-DataUser-0.0.1')
+  const jsonDataUser: formSchemaType = getDataUser
+    ? JSON.parse(getDataUser)
+    : null
+
   const [loadingSubmitCoffee, setLoadingSubmitCoffee] = useState<boolean>(false)
   const paymentForm = useForm<formSchemaType>({
     resolver: yupResolver(formSchema),
   })
-  const { handleSubmit } = paymentForm
+  const { handleSubmit, setValue } = paymentForm
+  useEffect(() => {
+    if (jsonDataUser) {
+      //@ts-ignore
+      setValue('city', jsonDataUser.city)
+      //@ts-ignore
+      setValue('complement', jsonDataUser.complement)
+      //@ts-ignore
+      setValue('neighborhood', jsonDataUser.neighborhood)
+      //@ts-ignore
+      setValue('number', jsonDataUser.number)
+      //@ts-ignore
+      setValue('paymentMethod', jsonDataUser.paymentMethod)
+      //@ts-ignore
+      setValue('zipCode', jsonDataUser.zipCode)
+      //@ts-ignore
+      setValue('state', jsonDataUser.state)
+      //@ts-ignore
+      setValue('street', jsonDataUser.street)
+    }
+  }, [])
 
   function submitCoffeeRequest(data: formSchemaType) {
     setLoadingSubmitCoffee(true)
@@ -38,6 +63,7 @@ export function ShoppingCart() {
     setTimeout(() => {
       setLoadingSubmitCoffee(false)
     }, 1000)
+    localStorage.setItem('coffeeDelivery-DataUser-0.0.1', JSON.stringify(data))
     console.log(data)
   }
 
