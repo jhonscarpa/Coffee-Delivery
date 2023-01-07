@@ -1,5 +1,6 @@
 import { useCoffees } from '../../../../hooks/useCoffees'
 import { SelectedCoffee } from '../SelectedCoffee'
+import ReactLoading from 'react-loading'
 import {
   ButtonConfirmOrdem,
   Container,
@@ -7,7 +8,13 @@ import {
   ListCoffeesSelected,
 } from './styles'
 
-export function SelectedCoffeeForm() {
+interface IPropsSelectedCoffee {
+  loadingSubmitForm: boolean
+}
+
+export function SelectedCoffeeForm({
+  loadingSubmitForm,
+}: IPropsSelectedCoffee) {
   const { coffees } = useCoffees()
 
   const totalValueCoffees = coffees.reduce((acc, coffee) => {
@@ -49,7 +56,13 @@ export function SelectedCoffeeForm() {
           <strong>{maskTotalOrder}</strong>
         </p>
       </ContentValuesCoffees>
-      <ButtonConfirmOrdem type="submit">Confirmar pedido</ButtonConfirmOrdem>
+      <ButtonConfirmOrdem type="submit" disabled={loadingSubmitForm}>
+        {loadingSubmitForm ? (
+          <ReactLoading type="balls" color="#FFF" height="1rem" width="1rem" />
+        ) : (
+          'Confirmar pedido'
+        )}
+      </ButtonConfirmOrdem>
     </Container>
   )
 }

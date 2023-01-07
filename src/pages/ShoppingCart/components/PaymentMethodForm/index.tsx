@@ -2,9 +2,12 @@ import { Bank, CreditCard, CurrencyDollar, Money } from 'phosphor-react'
 import { useFormContext } from 'react-hook-form'
 import { Container, ContentForm, SelectedPaymentMethod } from './styles'
 
-
 export function PaymentMethodForm() {
-  const { register, watch } = useFormContext()
+  const {
+    register,
+    watch,
+    formState: { errors },
+  } = useFormContext()
 
   const isActivePaymentMethod = watch('paymentMethod')
 
@@ -63,6 +66,10 @@ export function PaymentMethodForm() {
           hidden
         />
       </ContentForm>
+      {errors.paymentMethod && (
+        // @ts-ignore
+        <span className="errorMessage">{errors.paymentMethod.message}</span>
+      )}
     </Container>
   )
 }
