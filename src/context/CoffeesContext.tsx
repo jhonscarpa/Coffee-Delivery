@@ -1,5 +1,5 @@
-import { createContext, ReactNode, useEffect, useState } from "react"
-import { IPropsCoffee } from "../@types/coffee"
+import { createContext, ReactNode, useEffect, useState } from 'react'
+import { IPropsCoffee } from '../@types/coffee'
 
 interface IPropsCoffeeContext {
   coffees: IPropsCoffee[]
@@ -9,6 +9,7 @@ interface IPropsCoffeeContext {
   handleSubtractAmountCoffee: (updateAmount: IPropsCoffee) => void
   handleChangeUpdateCoffee: (updateAmount: IPropsCoffee) => void
   handleRemoveCoffeeShoppingCart: (id: string | number) => void
+  handleFinish: () => void
 }
 
 export const CoffeesContext = createContext({} as IPropsCoffeeContext)
@@ -20,7 +21,7 @@ export function CoffeesContextProvider({
   children,
 }: IPropsCoffeeContextProvider) {
   const [coffees, setCoffees] = useState<IPropsCoffee[]>(() => {
-    let initialState = localStorage.getItem("@coffee-delivery-1.0.0")
+    let initialState = localStorage.getItem('@coffee-delivery-1.0.0')
     if (initialState) {
       return (initialState = JSON.parse(initialState))
     } else {
@@ -30,7 +31,7 @@ export function CoffeesContextProvider({
   const totalCoffeeInCart = coffees.length
 
   useEffect(() => {
-    localStorage.setItem("@coffee-delivery-1.0.0", JSON.stringify(coffees))
+    localStorage.setItem('@coffee-delivery-1.0.0', JSON.stringify(coffees))
   }, [coffees])
 
   function addNewCoffee(newCoffee: IPropsCoffee) {
@@ -89,6 +90,9 @@ export function CoffeesContextProvider({
     const newListCoffees = coffees.filter(coffee => coffee.id !== id)
     setCoffees(newListCoffees)
   }
+  function handleFinish() {
+    setCoffees([])
+  }
 
   return (
     <CoffeesContext.Provider
@@ -100,6 +104,7 @@ export function CoffeesContextProvider({
         handleSubtractAmountCoffee,
         handleChangeUpdateCoffee,
         handleRemoveCoffeeShoppingCart,
+        handleFinish,
       }}
     >
       {children}

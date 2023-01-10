@@ -6,6 +6,8 @@ import { SelectedCoffeeForm } from './components/SelectedCoffeeForm'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useCoffees } from '../../hooks/useCoffees'
 
 const formSchema = yup.object().shape({
   zipCode: yup.string().required('Informe o cep').min(9, 'CEP inválido'),
@@ -23,19 +25,25 @@ const formSchema = yup.object().shape({
   // paymentMethod: "creditCard"
 })
 
-type formSchemaType = yup.InferType<typeof formSchema>
+export type formSchemaType = yup.InferType<typeof formSchema>
 
 export function ShoppingCart() {
+  const history = useNavigate()
+  const { handleFinish } = useCoffees()
+
   const getDataUser = localStorage.getItem('coffeeDelivery-DataUser-0.0.1')
   const jsonDataUser: formSchemaType = getDataUser
     ? JSON.parse(getDataUser)
     : null
 
   const [loadingSubmitCoffee, setLoadingSubmitCoffee] = useState<boolean>(false)
+
   const paymentForm = useForm<formSchemaType>({
     resolver: yupResolver(formSchema),
   })
+
   const { handleSubmit, setValue } = paymentForm
+
   useEffect(() => {
     if (jsonDataUser) {
       //@ts-ignore
@@ -64,7 +72,9 @@ export function ShoppingCart() {
       setLoadingSubmitCoffee(false)
     }, 1000)
     localStorage.setItem('coffeeDelivery-DataUser-0.0.1', JSON.stringify(data))
-    console.log(data)
+    localStorage.setItem('@coffee-delivery-1.0.0', '[]')
+    handleFinish()
+    history('/finalizado')
   }
 
   return (

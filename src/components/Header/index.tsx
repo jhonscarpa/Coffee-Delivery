@@ -3,10 +3,13 @@ import logoImg from '../../assets/logo.svg'
 import { NavLink } from 'react-router-dom'
 import { MapPin, ShoppingCart } from 'phosphor-react'
 import { useCoffees } from '../../hooks/useCoffees'
+import { formSchemaType } from '../../pages/ShoppingCart'
 
 export function Header() {
   const getAddrressUser = localStorage.getItem('coffeeDelivery-DataUser-0.0.1')
-  const jsonAddressUser = getAddrressUser ? JSON.parse(getAddrressUser) : null
+  const jsonAddressUser: formSchemaType = getAddrressUser
+    ? JSON.parse(getAddrressUser)
+    : null
 
   console.log(jsonAddressUser)
   const { totalCoffeeInCart } = useCoffees()
@@ -16,10 +19,15 @@ export function Header() {
         <img src={logoImg} alt="logo Coffee Delivery" />
       </BackToHome>
       <ActionsContent>
-        {jsonAddressUser !== null && (
+        {jsonAddressUser !== null ? (
           <p>
             <MapPin weight="fill" />
             {jsonAddressUser.city}, {jsonAddressUser.state}
+          </p>
+        ) : (
+          <p>
+            <MapPin weight="fill" />
+            Não informado
           </p>
         )}
         <NavLink to="/carrinho" title="Carrinho de compras">
