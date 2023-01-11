@@ -39,7 +39,8 @@ export const ContentDataFinish = styled.div`
   position: relative;
   background: ${props => props.theme.white};
   border: 1px;
-
+  width: 100%;
+  max-width: 32.875rem;
   &:before {
     content: '';
     position: absolute;
@@ -51,5 +52,50 @@ export const ContentDataFinish = styled.div`
     margin: -1px;
     border-radius: inherit;
     background: linear-gradient(102.89deg, #dbac2c 2.61%, #8047f8 98.76%);
+  }
+`
+
+const styleBackgroundIcon = {
+  LOCAL: 'purple',
+  FORECAST: 'yellow',
+  PAYMENT: 'yellow-dark',
+} as const
+
+interface IPropsInfoDataDelivery {
+  type: keyof typeof styleBackgroundIcon
+}
+
+export const InfoDataDelivery = styled.div<IPropsInfoDataDelivery>`
+  display: flex;
+  flex-direction: row;
+  gap: 0.75rem;
+  align-items: center;
+
+  .contentIcon {
+    background: ${props => props.theme[styleBackgroundIcon[props.type]]};
+    border-radius: 100%;
+    padding: 0.5rem;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+      width: 1rem;
+      height: 1rem;
+      color: ${props => props.theme.white};
+    }
+
+    p {
+      font-size: 1rem;
+      font-weight: 400;
+      color: ${props => props.theme['base-text']};
+
+      strong {
+        font-size: 1rem;
+        font-weight: 700;
+      }
+    }
   }
 `
