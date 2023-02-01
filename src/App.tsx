@@ -4,17 +4,20 @@ import { defaultTheme } from './styles/themes/defaultTheme'
 import { GlobalStyle } from './styles/global'
 import { BrowserRouter } from 'react-router-dom'
 import { CoffeesContextProvider } from './context/CoffeesContext'
+import { initializeApp } from 'firebase/app'
 
-// const firebaseConfig = {
-//   apiKey: 'AIzaSyCEA6bEaLprhHCOd-IT8PwmUgPM0T0vZzw',
-//   authDomain: 'coffee-delivery-portifolio.firebaseapp.com',
-//   projectId: 'coffee-delivery-portifolio',
-//   storageBucket: 'coffee-delivery-portifolio.appspot.com',
-//   messagingSenderId: '7539429443',
-//   appId: '1:7539429443:web:35cfe11a6a04c2dd3844f6',
-// }
+const firebaseConfig = {
+  apiKey: 'AIzaSyCEA6bEaLprhHCOd-IT8PwmUgPM0T0vZzw',
+  authDomain: 'coffee-delivery-portifolio.firebaseapp.com',
+  projectId: 'coffee-delivery-portifolio',
+  storageBucket: 'coffee-delivery-portifolio.appspot.com',
+  messagingSenderId: '7539429443',
+  appId: '1:7539429443:web:35cfe11a6a04c2dd3844f6',
+}
 
-// export { firebaseConfig }
+initializeApp(firebaseConfig)
+
+export { firebaseConfig }
 
 function App() {
   return (
