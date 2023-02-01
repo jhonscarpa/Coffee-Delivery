@@ -1,7 +1,7 @@
-import { Coffee, Package, ShoppingCart, Timer } from "phosphor-react"
-import { useEffect, useState } from "react"
-import { IPropsCoffee } from "../../@types/coffee"
-import { api } from "../../services/api"
+import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
+
+import { IPropsCoffee } from '../../@types/coffee'
+
 import {
   BannerCoffeeHome,
   BenefitCoffee,
@@ -9,52 +9,42 @@ import {
   ContentCoffeeList,
   HomeContainer,
   ListCoffee,
-} from "./styles"
-import bannerImg from "../../assets/bannerHome.svg"
-import { CardCoffee } from "./components/CardCoffee"
+} from './styles'
+import bannerImg from '../../assets/bannerHome.svg'
+import { CardCoffee } from './components/CardCoffee'
+
+import { coffeesList } from '../../utils/coffesList'
 
 interface IPropsBenefitCoffeeList {
   content: string
   icon: JSX.Element
-  color: "yellowDark" | "gray" | "yellow" | "purple"
+  color: 'yellowDark' | 'gray' | 'yellow' | 'purple'
 }
 
 const benefitCoffeeDelivery = [
   {
-    content: "Compra simples e segura",
+    content: 'Compra simples e segura',
     icon: <ShoppingCart weight="fill" />,
-    color: "yellowDark",
+    color: 'yellowDark',
   },
   {
-    content: "Embalagem mantém o café intacto",
+    content: 'Embalagem mantém o café intacto',
     icon: <Package weight="fill" />,
-    color: "gray",
+    color: 'gray',
   },
   {
-    content: "Entrega rápido e rastreada",
+    content: 'Entrega rápido e rastreada',
     icon: <Timer weight="fill" />,
-    color: "yellow",
+    color: 'yellow',
   },
   {
-    content: "O café chega fresquinho até você",
+    content: 'O café chega fresquinho até você',
     icon: <Coffee weight="fill" />,
-    color: "purple",
+    color: 'purple',
   },
 ] as IPropsBenefitCoffeeList[]
 
 export function Home() {
-  const [coffees, setCoffees] = useState<IPropsCoffee[]>([])
-  useEffect(() => {
-    api
-      .get("coffees")
-      .then(response => {
-        setCoffees(response.data.coffees)
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }, [])
-
   return (
     <HomeContainer>
       <BannerCoffeeHome>
@@ -73,7 +63,7 @@ export function Home() {
                 backgroundColor={benefit.color}
               >
                 <i>{benefit.icon}</i>
-                {benefit.content}{" "}
+                {benefit.content}{' '}
               </BenefitCoffee>
             ))}
           </ul>
@@ -85,7 +75,7 @@ export function Home() {
         <h1>Nossos cafés</h1>
 
         <ListCoffee>
-          {coffees.map((coffee: IPropsCoffee) => (
+          {coffeesList.map((coffee: IPropsCoffee) => (
             <li key={coffee.id}>
               <CardCoffee coffee={coffee} />
             </li>

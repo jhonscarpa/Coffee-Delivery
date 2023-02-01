@@ -1,9 +1,10 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
 export const HomeContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding: 6.25rem 10rem;
+  gap: 1rem;
 `
 export const BannerCoffeeHome = styled.section`
   display: grid;
@@ -16,15 +17,15 @@ export const BannerCoffeeHome = styled.section`
     gap: 1rem;
     margin-bottom: 4.125rem;
     h1 {
-      font: 800 3rem "Baloo 2", sans-serif;
-      color: ${props => props.theme["base-title"]};
+      font: 800 3rem 'Baloo 2', sans-serif;
+      color: ${props => props.theme['base-title']};
       line-height: 130%;
     }
 
     span {
       font-size: 1.1rem;
       line-height: 130%;
-      color: ${props => props.theme["base-subtitle"]};
+      color: ${props => props.theme['base-subtitle']};
       font-stretch: 100;
     }
   }
@@ -57,10 +58,10 @@ export const ColBanner = styled.div`
 `
 
 const STATUS_COLOR = {
-  yellowDark: "yellow-dark",
-  yellow: "yellow",
-  gray: "base-text",
-  purple: "purple",
+  yellowDark: 'yellow-dark',
+  yellow: 'yellow',
+  gray: 'base-text',
+  purple: 'purple',
 } as const
 
 export interface IPropsBenefit {

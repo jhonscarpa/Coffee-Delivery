@@ -5,7 +5,9 @@ export const GlobalStyle = createGlobalStyle`
   margin:0;
   padding:0;
   box-sizing: border-box;
-
+  scrollbar-width: thin;          
+  scrollbar-color: ${props => props.theme.purple} ${props =>
+  props.theme['purple-dark']};  
 }
 
 :focus{
@@ -40,10 +42,7 @@ body,input,textarea,button{
  
 }
 
-* {
-  scrollbar-width: thin;          
-  scrollbar-color: ${props => props.theme.purple} ${props =>
-  props.theme['purple-dark']};  
-  
-}
+
+
+
 `
