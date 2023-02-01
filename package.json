@@ -13,7 +13,6 @@
     "axios": "^0.27.2",
     "cep-promise": "^4.2.0",
     "firebase": "^9.15.0",
-    "miragejs": "^0.1.45",
     "phosphor-icons": "^1.4.2",
     "phosphor-react": "^1.4.1",
     "react": "^18.2.0",
