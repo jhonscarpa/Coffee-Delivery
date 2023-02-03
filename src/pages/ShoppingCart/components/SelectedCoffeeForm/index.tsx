@@ -25,7 +25,8 @@ export function SelectedCoffeeForm({
     currency: 'BRL',
   }).format(totalValueCoffees)
 
-  const generateDeliveryValue = Math.fround(Math.random() * 5) + 1
+  const generateDeliveryValue =
+    coffees.length > 0 ? Math.fround(Math.random() * 5) + 1 : 0
   const maskGenerateDeliveryValue = new Intl.NumberFormat('pt-BR', {
     style: 'currency',
     currency: 'BRL',
@@ -48,9 +49,11 @@ export function SelectedCoffeeForm({
         <p>
           Total de itens <span>{maskTotalValueCoffees}</span>
         </p>
-        <p>
-          Entrega <span>{maskGenerateDeliveryValue}</span>
-        </p>
+        {coffees.length > 0 && (
+          <p>
+            Entrega <span>{maskGenerateDeliveryValue}</span>
+          </p>
+        )}
         <p>
           <strong>Total</strong>
           <strong>{maskTotalOrder}</strong>

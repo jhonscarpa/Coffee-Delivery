@@ -6,9 +6,9 @@ import { useCoffees } from '../../hooks/useCoffees'
 import { formSchemaType } from '../../pages/ShoppingCart'
 
 export function Header() {
-  const getAddrressUser = localStorage.getItem('coffeeDelivery-DataUser-0.0.1')
-  const jsonAddressUser: formSchemaType = getAddrressUser
-    ? JSON.parse(getAddrressUser)
+  const getAddressUser = localStorage.getItem('coffeeDelivery-DataUser-0.0.1')
+  const jsonAddressUser: formSchemaType = getAddressUser
+    ? JSON.parse(getAddressUser)
     : null
 
   console.log(jsonAddressUser)

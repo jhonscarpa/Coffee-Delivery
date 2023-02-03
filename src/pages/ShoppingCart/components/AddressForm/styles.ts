@@ -48,6 +48,7 @@ export const ContentForm = styled.section`
     }
   }
 `
+
 export const RowInputForm = styled.div`
   display: flex;
   gap: 0.75rem;
