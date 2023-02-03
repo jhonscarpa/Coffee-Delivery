@@ -20,6 +20,12 @@ export const Container = styled.div`
       font-stretch: 100;
     }
   }
+  @media (max-width: 768px) {
+    padding: 2.5rem 4rem;
+  }
+  @media (max-width: 480px) {
+    padding: 2.5rem 1rem;
+  }
 `
 
 export const Content = styled.main`
@@ -28,6 +34,16 @@ export const Content = styled.main`
   gap: 1rem;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+
+    img {
+      width: 100%;
+      max-width: 30rem;
+    }
+  }
 `
 
 export const ContentDataFinish = styled.div`
@@ -41,6 +57,7 @@ export const ContentDataFinish = styled.div`
   border: 1px;
   width: 100%;
   max-width: 32.875rem;
+  transition: padding 0.3s;
   &:before {
     content: '';
     position: absolute;
@@ -52,6 +69,9 @@ export const ContentDataFinish = styled.div`
     margin: -1px;
     border-radius: inherit;
     background: linear-gradient(102.89deg, #dbac2c 2.61%, #8047f8 98.76%);
+  }
+  @media (max-width: 768px) {
+    padding: 1rem;
   }
 `
 

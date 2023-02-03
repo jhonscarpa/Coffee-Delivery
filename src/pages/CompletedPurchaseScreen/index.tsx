@@ -76,7 +76,12 @@ export function CompletedPurchaseScreen() {
             </p>
           </InfoDataDelivery>
         </ContentDataFinish>
-        <img src={motoboyImg} alt="Homem sentado em uma motocicleta com baú" />
+        <div className="contentImg">
+          <img
+            src={motoboyImg}
+            alt="Homem sentado em uma motocicleta com baú"
+          />
+        </div>
       </Content>
     </Container>
   )
