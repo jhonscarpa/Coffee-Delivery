@@ -11,6 +11,13 @@ export const HeaderContainer = styled.div`
   background-color: ${props => props.theme.background};
   z-index: 1;
   max-width: 1440px;
+
+  @media (max-width: 768px) {
+    padding: 2.06rem 4rem;
+  }
+  @media (max-width: 480px) {
+    padding: 2.06rem 1rem;
+  }
 `
 export const BackToHome = styled(NavLink)`
   height: 2.5rem;

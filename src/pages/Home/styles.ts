@@ -5,6 +5,12 @@ export const HomeContainer = styled.div`
   flex-direction: column;
   padding: 6.25rem 10rem;
   gap: 1rem;
+  @media (max-width: 768px) {
+    padding: 6.25rem 4rem;
+  }
+  @media (max-width: 480px) {
+    padding: 6.25rem 1rem;
+  }
 `
 export const BannerCoffeeHome = styled.section`
   display: grid;
@@ -32,6 +38,23 @@ export const BannerCoffeeHome = styled.section`
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
+    justify-items: center;
+  }
+  @media (max-width: 480px) {
+    header {
+      margin-bottom: 3rem;
+      h1 {
+        font-size: 2rem;
+      }
+      span {
+        font-size: 1rem;
+      }
+    }
+
+    img {
+      width: 15rem;
+      height: auto;
+    }
   }
 `
 
@@ -54,6 +77,10 @@ export const ColBanner = styled.div`
       align-items: center;
       min-width: 14.437rem;
     }
+  }
+
+  @media (max-width: 768px) {
+    align-items: center;
   }
 `
 
@@ -93,4 +120,8 @@ export const ListCoffee = styled.ul`
   flex-wrap: wrap;
   gap: 2rem;
   list-style: none;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
 `

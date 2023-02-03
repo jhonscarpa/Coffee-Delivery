@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
 export const LayoutContainer = styled.div`
   display: flex;
@@ -9,5 +9,8 @@ export const LayoutContainer = styled.div`
 
   .divider {
     height: 6.25rem;
+    @media (max-width: 768px) {
+      height: 3.75rem;
+    }
   }
 `
