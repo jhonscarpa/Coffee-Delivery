@@ -26,6 +26,10 @@ export const Container = styled.div`
       color: ${props => props.theme['base-text']};
     }
   }
+
+  @media (max-width: 480px) {
+    padding: 1.5rem 0.5rem;
+  }
 `
 export const ContentForm = styled.section`
   display: flex;
@@ -52,16 +56,34 @@ export const ContentForm = styled.section`
 export const RowInputForm = styled.div`
   display: flex;
   gap: 0.75rem;
-  position: relative;
-  align-items: center;
-  width: 100%;
 
-  i {
-    position: absolute;
-    right: 0.75rem;
-    font-style: italic;
-    font-size: 0.75rem;
-    color: ${props => props.theme['base-label']};
+  .contentOptional {
+    display: flex;
+    position: relative;
+    align-items: center;
+    width: 100%;
+
+    i {
+      position: absolute;
+      right: 0.75rem;
+      font-style: italic;
+      font-size: 0.75rem;
+      color: ${props => props.theme['base-label']};
+    }
+  }
+
+  .contentCityAndUf {
+    display: flex;
+    gap: 0.75rem;
+    width: 100%;
+  }
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+
+    .contentOptional i {
+      font-size: 0.5rem;
+    }
   }
 `
 
@@ -90,12 +112,20 @@ export const BaseInput = styled.input<IPropsBaseInput>`
     color: ${props => props.theme['base-label']};
     font-size: 0.875rem;
   }
+
+  @media (max-width: 600px) {
+    padding-right: ${props => props.suffix && '3rem'};
+  }
 `
 
 export const ShortInput = styled(BaseInput)`
   width: 12.5rem;
 
   &.ufInput {
-    max-width: 3.75rem;
+    max-width: 3.75rem !important;
+  }
+
+  @media (max-width: 600px) {
+    max-width: none;
   }
 `

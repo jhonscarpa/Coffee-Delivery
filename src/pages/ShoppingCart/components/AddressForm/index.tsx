@@ -89,14 +89,15 @@ export function AddressForm() {
             {/* @ts-ignore */}
             {errors.number?.message && <span>{errors.number?.message}</span>}
           </div>
-
-          <BaseInput
-            suffix
-            {...register('complement')}
-            placeholder="Complemento"
-            isError={errors.complement ? 'error' : 'success'}
-          />
-          <i>Opcional</i>
+          <div className="contentOptional">
+            <BaseInput
+              suffix
+              {...register('complement')}
+              placeholder="Complemento"
+              isError={errors.complement ? 'error' : 'success'}
+            />
+            <i>Opcional</i>
+          </div>
         </RowInputForm>
         <RowInputForm>
           <div className="contentErrorInput">
@@ -110,26 +111,28 @@ export function AddressForm() {
               <span>{errors.neighborhood?.message}</span>
             )}
           </div>
-          <div className="contentErrorInput" style={{ width: '100%' }}>
-            <BaseInput
-              {...register('city')}
-              placeholder="Cidade"
-              isError={errors.city ? 'error' : 'success'}
-            />
-            {/* @ts-ignore */}
-            {errors.city?.message && <span>{errors.city?.message}</span>}
-          </div>
-          <div className="contentErrorInput ufContent">
-            <ShortInput
-              {...register('state')}
-              placeholder="UF"
-              className="ufInput"
-              isError={errors.state ? 'error' : 'success'}
-            />
-            {errors.state?.message && (
-              // @ts-ignore
-              <span>{errors.state?.message}</span>
-            )}
+          <div className="contentCityAndUf">
+            <div className="contentErrorInput" style={{ width: '100%' }}>
+              <BaseInput
+                {...register('city')}
+                placeholder="Cidade"
+                isError={errors.city ? 'error' : 'success'}
+              />
+              {/* @ts-ignore */}
+              {errors.city?.message && <span>{errors.city?.message}</span>}
+            </div>
+            <div className="contentErrorInput ufContent">
+              <ShortInput
+                {...register('state')}
+                placeholder="UF"
+                className="ufInput"
+                isError={errors.state ? 'error' : 'success'}
+              />
+              {errors.state?.message && (
+                // @ts-ignore
+                <span>{errors.state?.message}</span>
+              )}
+            </div>
           </div>
         </RowInputForm>
       </ContentForm>

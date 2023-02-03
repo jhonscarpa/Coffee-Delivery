@@ -12,6 +12,10 @@ export const Container = styled.div`
   ::-webkit-scrollbar {
     display: none;
   }
+
+  @media (max-width: 480px) {
+    padding: 1.5rem 0.5rem;
+  }
 `
 
 export const ListCoffeesSelected = styled.ul`

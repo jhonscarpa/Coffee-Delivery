@@ -33,6 +33,9 @@ export const Container = styled.div`
     color: ${props => props.theme.error};
     font-size: 0.875rem;
   }
+  @media (max-width: 480px) {
+    padding: 1.5rem 0.5rem;
+  }
 `
 
 export const ContentForm = styled.div`
@@ -70,5 +73,9 @@ export const SelectedPaymentMethod = styled.label<IPropsSelectedPaymentMEthod>`
 
   :hover {
     background: ${props => props.theme['base-hover']};
+  }
+
+  @media (max-width: 600px) {
+    max-width: 100%;
   }
 `
