@@ -67,3 +67,9 @@ export const ButtonConfirmOrdem = styled.button`
     background: ${props => props.theme['yellow-dark']};
   }
 `
+export const NoDataCoffee = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 0.5rem;
+`

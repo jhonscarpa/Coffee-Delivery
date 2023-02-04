@@ -6,7 +6,9 @@ import {
   Container,
   ContentValuesCoffees,
   ListCoffeesSelected,
+  NoDataCoffee,
 } from './styles'
+import { Link } from 'react-router-dom'
 
 interface IPropsSelectedCoffee {
   loadingSubmitForm: boolean
@@ -41,9 +43,16 @@ export function SelectedCoffeeForm({
   return (
     <Container>
       <ListCoffeesSelected>
-        {coffees.map(coffee => (
-          <SelectedCoffee coffee={coffee} key={coffee.id} />
-        ))}
+        {coffees.length > 0 ? (
+          coffees.map(coffee => (
+            <SelectedCoffee coffee={coffee} key={coffee.id} />
+          ))
+        ) : (
+          <NoDataCoffee>
+            <h3>Você ainda não adicionou nenhum café a sua lista</h3>
+            <Link to="/">Encontre o seu café preferido clicando aqui</Link>
+          </NoDataCoffee>
+        )}
       </ListCoffeesSelected>
       <ContentValuesCoffees>
         <p>

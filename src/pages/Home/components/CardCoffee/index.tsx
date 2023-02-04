@@ -1,3 +1,7 @@
+import { Minus, Plus, ShoppingCart } from 'phosphor-react'
+import { FormEvent, useState } from 'react'
+import { IPropsCoffee } from '../../../../@types/coffee'
+import { useCoffees } from '../../../../hooks/useCoffees'
 import {
   AddCartButton,
   ButtonInputAction,
@@ -6,11 +10,7 @@ import {
   ContentInput,
   FormBuyCoffee,
   HeaderCardCoffee,
-} from "./styles"
-import { IPropsCoffee } from "../../../../@types/coffee"
-import { Minus, Plus, ShoppingCart } from "phosphor-react"
-import { FormEvent, useState } from "react"
-import { useCoffees } from "../../../../hooks/useCoffees"
+} from './styles'
 
 interface IPropsCardCoffee {
   coffee: IPropsCoffee
@@ -20,9 +20,9 @@ export function CardCoffee({ coffee }: IPropsCardCoffee) {
   const { addNewCoffee } = useCoffees()
   const [amountCoffee, setAmountCoffee] = useState<number>(1)
 
-  const maskValueCoffee = new Intl.NumberFormat("pt-BR", {
-    style: "currency",
-    currency: "BRL",
+  const maskValueCoffee = new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
   }).format(coffee.price)
 
   function handleAddCoffeeAmount() {
@@ -38,7 +38,7 @@ export function CardCoffee({ coffee }: IPropsCardCoffee) {
       ...coffee,
       amount: amountCoffee,
     }
-    console.log(newCoffee)
+
     addNewCoffee(newCoffee)
   }
 
