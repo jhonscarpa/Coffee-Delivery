@@ -27,4 +27,3 @@
 - <a href='https://github.com/brunobertolini/remask#readme' target='_blank'>Remask</a>
 
 
-<iframe src='./src/assets/github/demonstration.gif'></iframe>
