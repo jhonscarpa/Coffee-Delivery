@@ -1,4 +1,4 @@
-import { ToastContainer, toast } from 'react-toastify'
+import { toast } from 'react-toastify'
 import { useForm, FormProvider } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
@@ -84,11 +84,24 @@ export function ShoppingCart() {
 
     setTimeout(() => {
       setLoadingSubmitCoffee(false)
+      toast.success('Pedido realizado com sucesso', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+      })
+      localStorage.setItem(
+        'coffeeDelivery-DataUser-0.0.1',
+        JSON.stringify(data),
+      )
+      localStorage.setItem('@coffee-delivery-1.0.0', '[]')
+      handleFinish()
+      history('/finalizado')
     }, 1000)
-    localStorage.setItem('coffeeDelivery-DataUser-0.0.1', JSON.stringify(data))
-    localStorage.setItem('@coffee-delivery-1.0.0', '[]')
-    handleFinish()
-    history('/finalizado')
   }
 
   return (
@@ -104,18 +117,6 @@ export function ShoppingCart() {
           <SelectedCoffeeForm loadingSubmitForm={loadingSubmitCoffee} />
         </ColForm>
       </FormProvider>
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
     </FinishCoffeePurchase>
   )
 }

@@ -5,6 +5,7 @@ import { GlobalStyle } from './styles/global'
 import { BrowserRouter } from 'react-router-dom'
 import { CoffeesContextProvider } from './context/CoffeesContext'
 import { initializeApp } from 'firebase/app'
+import { ToastContainer } from 'react-toastify'
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCEA6bEaLprhHCOd-IT8PwmUgPM0T0vZzw',
@@ -28,6 +29,18 @@ function App() {
         </CoffeesContextProvider>
       </BrowserRouter>
       <GlobalStyle />
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </ThemeProvider>
   )
 }
