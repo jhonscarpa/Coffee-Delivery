@@ -26,4 +26,6 @@
 - <a href='https://github.com/BrasilAPI/cep-promise' target='_blank'>Cep-Promise</a>
 - <a href='https://github.com/brunobertolini/remask#readme' target='_blank'>Remask</a>
 
+## Demonstração
 
+<img src='./src/assets/github/demonstration.gif' />
