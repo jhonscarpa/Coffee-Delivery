@@ -28,6 +28,6 @@
 
 ## Demonstração
 
-<a href='https://coffee-delivery-portifolio.web.app'/>Site para teste</a>
+<a href='https://coffee-delivery-portifolio.web.app'/>coffee-delivery-portifolio.web.app</a>
 
 <img src='./src/assets/github/demonstration.gif' />
